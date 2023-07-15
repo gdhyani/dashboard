@@ -42,35 +42,35 @@ export default function List_influ() {
                             ) {
                                 return (
                                     <tr className="" key={index}>
-                                        <td className="px-5 sm:px-8 py-3">
+                                        <td className="px-5 sm:px-8 py-3 font-mono">
                                             {index + 1}
                                         </td>
                                         <td className="px-5 sm:px-8 py-3 text-lg">
                                             {infl.username} <br></br>
-                                            <p className="text-[#a1a1aa]">
+                                            <p className="text-[#a1a1aa] font-mono">
                                                 Followers: {infl.followers}
                                                 <br></br>
                                                 {infl.dateUpdated}
                                             </p>
                                         </td>
-                                        <td className="px-5 sm:px-8 py-3">
+                                        <td className="px-5 sm:px-8 py-3 font-mono">
                                             {infl.likes}
                                         </td>
-                                        <td className="px-5 sm:px-8 py-3">
+                                        <td className="px-5 sm:px-8 py-3 font-mono">
                                             {infl.comments}
                                         </td>
-                                        <td className="px-5 sm:px-8 py-3">
+                                        <td className="px-5 sm:px-8 py-3 font-mono">
                                             {infl.play}
                                         </td>
-                                        <td className="px-5 sm:px-8 py-3">
+                                        <td className="px-5 sm:px-8 py-3 font-mono">
                                             {infl.reach}
                                         </td>
-                                        <td className="px-5 sm:px-8 py-3">
+                                        <td className="px-5 sm:px-8 py-3 font-mono">
                                             {infl.engagement}
                                         </td>
                                         <td className="px-5 sm:px-8 py-3  ">
                                             <Link
-                                                className="bg-gradient-to-r from-red-500 to-orange-500 rounded px-3 py-1 font-semibold text-white flex justify-center"
+                                                className="bg-gradient-to-r from-red-500 to-orange-500 rounded px-3 py-1 font-medium text-white flex justify-center"
                                                 href={infl.link}
                                             >
                                                 Follow Post!

@@ -85,52 +85,57 @@ export default function Navbar() {
                                 alt="noti"
                             />
                         </div>
-                        <div
-                            className={`absolute h-max sm:w-44 p-2 bg-black border rounded-lg ${
-                                avatar ? "flex" : "hidden"
-                            } w-[99%] right-1 md:right-3 flex-col mt-16 gap-1`}
+                        <OutsideClickHandler
+                            onOutsideClick={handleAvatar}
+                            disabled={!avatar}
                         >
-                            <h1
-                                className="text-md font-bold"
-                                href="/user/dashboard"
+                            <div
+                                className={`absolute h-max sm:w-44 p-2 bg-black border rounded-lg ${
+                                    avatar ? "flex" : "hidden"
+                                } w-[99%] right-1 md:right-3 flex-col mt-16 gap-1`}
                             >
-                                Brand
-                            </h1>
-                            <p className="text-sm text-[#a1a1aa]">
-                                brand@gmail.com
-                            </p>
-                            <hr className="border-[#a1a1aa]"></hr>
-                            <Link
-                                onClick={handleAvatar}
-                                className=" hover:bg-[#2d2d2f98] p-1 rounded-md"
-                                href="/user/dashboard"
-                            >
-                                Profile
-                            </Link>
-                            <Link
-                                onClick={handleAvatar}
-                                className=" hover:bg-[#2d2d2f98] p-1 rounded-md"
-                                href="/user/dashboard"
-                            >
-                                Billing
-                            </Link>
-                            <Link
-                                onClick={handleAvatar}
-                                className=" hover:bg-[#2d2d2f98] p-1 rounded-md"
-                                href="/user/dashboard"
-                            >
-                                Settings
-                            </Link>
-                            <hr className="border-[#a1a1aa]"></hr>
+                                <h1
+                                    className="text-md font-bold"
+                                    href="/user/dashboard"
+                                >
+                                    Brand
+                                </h1>
+                                <p className="text-sm text-[#a1a1aa]">
+                                    brand@gmail.com
+                                </p>
+                                <hr className="border-[#a1a1aa]"></hr>
+                                <Link
+                                    onClick={handleAvatar}
+                                    className=" hover:bg-[#2d2d2f98] p-1 rounded-md"
+                                    href="/user/dashboard"
+                                >
+                                    Profile
+                                </Link>
+                                <Link
+                                    onClick={handleAvatar}
+                                    className=" hover:bg-[#2d2d2f98] p-1 rounded-md"
+                                    href="/user/dashboard"
+                                >
+                                    Billing
+                                </Link>
+                                <Link
+                                    onClick={handleAvatar}
+                                    className=" hover:bg-[#2d2d2f98] p-1 rounded-md"
+                                    href="/user/dashboard"
+                                >
+                                    Settings
+                                </Link>
+                                <hr className="border-[#a1a1aa]"></hr>
 
-                            <Link
-                                onClick={handleAvatar}
-                                className="text-red-500 hover:bg-[#2d2d2f98] h-fit w-full rounded-md p-1"
-                                href="/login"
-                            >
-                                Log out
-                            </Link>
-                        </div>
+                                <Link
+                                    onClick={handleAvatar}
+                                    className="text-red-500 hover:bg-[#2d2d2f98] h-fit w-full rounded-md p-1"
+                                    href="/login"
+                                >
+                                    Log out
+                                </Link>
+                            </div>
+                        </OutsideClickHandler>
                     </div>
                 </div>
                 {/* //side menu */}

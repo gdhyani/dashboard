@@ -8,7 +8,7 @@ import Sidebar from "@/components/sidebar";
 import CardLineChart from "@/components/chart";
 export default function Dashboard() {
     return (
-        <main className="h-screen w-screen pt-20">
+        <main className="w-screen pt-20">
             <div className="flex flex-row">
                 <div className="md:flex hidden flex-col gap-3 fixed min-w-fit h-screen bg-black border-r-2 border-[#262626] text-left pt-5">
                     <Sidebar />
@@ -22,7 +22,7 @@ export default function Dashboard() {
                         alt="blob"
                     /> */}
                     <div className="min-h-screen  md:pl-64">
-                        <div className="mt-24 mb-16 p-8 flex flex-col text-center sm:text-left">
+                        <div className="mt-24 mb-16 p-8 flex flex-col text-left">
                             <h1 className="text-6xl  pb-3 font-bold bg-gradient-to-r from-red-600 to-amber-400 bg-clip-text text-transparent">BRAND NAME</h1>
                             <h1 className="text-md">
                                 Total Influencers : 5000
