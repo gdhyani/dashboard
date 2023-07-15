@@ -8,14 +8,14 @@ export default function List_influ() {
     const [paginate, setPaginate] = useState(1);
     return (
         <main className="overflow-hidden">
-            <div className="p-8 justify-between flex flex-row  items-center">
+            <div className="my-10 p-4 sm:p-8 justify-between flex flex-row  items-center">
                 <h1 className="text-3xl  font-bold">Campaign Posts</h1>
 
                 <Link
                     href="/list_incfluencer"
-                    className="hover:underline font-mono"
+                    className="hover:underline font-mono text-xs"
                 >
-                    View All
+                    [ View All ]
                 </Link>
             </div>
             <div className="p-3 m-3 rounded-xl border overflow-auto">
