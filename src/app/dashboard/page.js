@@ -13,13 +13,13 @@ export default function Dashboard() {
                     <Sidebar />
                 </div>
                 <div className="flex flex-col w-full">
-                    <Image
+                    {/* <Image
                         className="z-50 absolute -left-4 sm:-top-32 sm:-left-40"
                         src="blob2.svg"
                         width={1000}
                         height={1000}
                         alt="blob"
-                    />
+                    /> */}
                     <div className="min-h-screen  md:pl-64">
                         <div className="p-8 flex flex-col text-center sm:text-left">
                             <h1 className="text-5xl  py-3 font-bold">
