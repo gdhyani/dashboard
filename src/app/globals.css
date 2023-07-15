@@ -7,6 +7,7 @@ body{
   /* color:#ecedee; */
   color:white;
 }
+/* scrollbar */
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -21,4 +22,13 @@ body{
 ::-webkit-scrollbar-thumb {
   background: gray; 
   border-radius: 4px;
+}
+
+/* table */
+th{
+  text-align: left;
+    /* padding:10px 20px; */
+}
+td{
+  /* padding:20px 20px; */
 }

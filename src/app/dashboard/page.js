@@ -2,7 +2,8 @@ import Navbar from "@/components/navbar";
 import Image from "next/image";
 import Link from "next/link";
 import "./style.css";
-import influencer from "@/components/influencer";
+import influencers from "@/components/influencer";
+import List_influ from "@/components/list-influ";
 export default function Dashboard() {
     return (
         <main className="h-screen w-screen pt-20">
@@ -224,29 +225,8 @@ export default function Dashboard() {
                             </div>
                         </div>
                         {/* second section */}
-                        <div className="p-8 justify-between flex flex-row  items-center">
-                            <h1 className="text-3xl  font-bold">
-                                Campaign Posts
-                            </h1>
-
-                            <Link
-                                href="/list_incfluencer"
-                                className="hover:underline font-mono"
-                            >
-                                View All
-                            </Link>
-                        </div>
-                        <div className="p-8">
-                            {influencer.forEach(inf=>(
-                                <div>
-                                    <h1>data</h1>
-                                </div>
-                            ))}
-                        </div>
+                        <List_influ />
                     </div>
-
-                    {/* <div className="min-h-screen bg-yellow-400">1</div>
-                    <div className="min-h-screen bg-blue-400">1</div> */}
                 </div>
             </div>
         </main>
