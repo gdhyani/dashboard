@@ -12,7 +12,7 @@ export default function Register() {
     }
 
     return (
-        <dev className="w-full h-screen text-center">
+        <main className="w-full pt-20 text-center">
             <h1 className="text-4xl sm:text-6xl font-black m-10">Register</h1>
             <form className="flex justify-center flex-col max-w-xl m-auto gap-5 ">
                 <input
@@ -43,6 +43,6 @@ export default function Register() {
                     </Link>
                 </h1>
             </form>
-        </dev>
+        </main>
     );
 }

@@ -48,7 +48,7 @@ export default function List_influ() {
                                         <td className="px-5 sm:px-8 py-3 text-lg">
                                             {infl.username} <br></br>
                                             <p className="text-[#a1a1aa]">
-                                                Followers:{infl.followers}
+                                                Followers: {infl.followers}
                                                 <br></br>
                                                 {infl.dateUpdated}
                                             </p>
@@ -70,7 +70,7 @@ export default function List_influ() {
                                         </td>
                                         <td className="px-5 sm:px-8 py-3  ">
                                             <Link
-                                                className="hover:bg-white bg-teal-500 rounded px-3 py-1 text-black flex justify-center"
+                                                className="bg-gradient-to-r from-red-500 to-orange-500 rounded px-3 py-1 font-semibold text-white flex justify-center"
                                                 href={infl.link}
                                             >
                                                 Follow Post!
@@ -95,7 +95,7 @@ export default function List_influ() {
                     className="px-2 py-1 border rounded-md border-[#57575a] text-white bg-black hover:bg-[#212121]"
                 >
                     <Image
-                        src="double-arrow-left-white.svg"
+                        src="../double-arrow-left-white.svg"
                         width={20}
                         height={20}
                         alt=""
@@ -108,7 +108,7 @@ export default function List_influ() {
                     className="px-2 py-1 border rounded-md border-[#57575a] text-white bg-black hover:bg-[#212121]"
                 >
                     <Image
-                        src="arrow-left-white.svg"
+                        src="../arrow-left-white.svg"
                         width={20}
                         height={20}
                         alt=""
@@ -121,7 +121,7 @@ export default function List_influ() {
                     className="px-2 py-1 border rounded-md border-[#57575a] text-white bg-black hover:bg-[#212121]"
                 >
                     <Image
-                        src="arrow-right-white.svg"
+                        src="../arrow-right-white.svg"
                         width={20}
                         height={20}
                         alt=""
@@ -134,7 +134,7 @@ export default function List_influ() {
                     className="px-2 py-1 border rounded-md border-[#57575a] text-white bg-black hover:bg-[#212121]"
                 >
                     <Image
-                        src="double-arrow-right-white.svg"
+                        src="../double-arrow-right-white.svg"
                         width={20}
                         height={20}
                         alt=""

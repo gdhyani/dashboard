@@ -2,21 +2,20 @@
 import Image from "next/image";
 import { useState } from "react";
 import Alert from "./alert";
+import Link from "next/link";
 
 export default function Sidebar() {
     const [alert, setAlert] = useState(false);
 
     return (
         <>
-            <button
-                onClick={() => {
-                    setAlert(true);
-                }}
+            <Link
+                href="/user/dashboard"
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
-                <Image src="home.svg" width={30} height={20} alt=""></Image>
+                <Image src="../home.svg" width={30} height={30} alt=""></Image>
                 Home
-            </button>
+            </Link>
             <h1 className="font-normal ml-6 text-gray-500">Main Menu</h1>
             <button
                 onClick={() => {
@@ -24,30 +23,30 @@ export default function Sidebar() {
                 }}
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
-                <Image src="account.svg" width={30} height={20} alt=""></Image>
+                <Image src="../balance.svg" width={30} height={30} alt=""></Image>
                 Account
             </button>
-            <button
+            <Link href="/user/influencer"
                 onClick={() => {
                     setAlert(true);
                 }}
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
                 <Image
-                    src="customers.svg"
+                    src="../customers.svg"
                     width={30}
-                    height={20}
+                    height={30}
                     alt=""
                 ></Image>
-                Customers
-            </button>
+                Influencers
+            </Link>
             <button
                 onClick={() => {
                     setAlert(true);
                 }}
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
-                <Image src="payment.svg" width={30} height={20} alt=""></Image>
+                <Image src="../payment.svg" width={30} height={30} alt=""></Image>
                 Payment
             </button>
             <button
@@ -56,7 +55,7 @@ export default function Sidebar() {
                 }}
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
-                <Image src="report.svg" width={30} height={20} alt=""></Image>
+                <Image src="../report.svg" width={30} height={30} alt=""></Image>
                 Report
             </button>
             <h1 className="font-normal ml-6 text-gray-500">General</h1>
@@ -67,9 +66,9 @@ export default function Sidebar() {
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
                 <Image
-                    src="developer.svg"
+                    src="../developer.svg"
                     width={30}
-                    height={20}
+                    height={30}
                     alt=""
                 ></Image>
                 Developer
@@ -81,9 +80,9 @@ export default function Sidebar() {
                 className="text-left ml-6 mr-4 w-52 px-2 hover:bg-[#121212] rounded py-2 flex items-center gap-3"
             >
                 <Image
-                    src="testreport.svg"
+                    src="../testreport.svg"
                     width={30}
-                    height={20}
+                    height={30}
                     alt=""
                 ></Image>
                 Test Report
@@ -95,12 +94,17 @@ export default function Sidebar() {
             >
                 <div className="flex justify-between pr-2">
                     <h1 className="text-lg ">Error</h1>
-                    <button onClick={()=>{setAlert(false)}}>Close</button>
+                    <button
+                        onClick={() => {
+                            setAlert(false);
+                        }}
+                    >
+                        Close
+                    </button>
                 </div>
 
-                <h1 className="text-2xl font-bold">
-                    Not Authorized User
-                </h1>
-            </div></>
+                <h1 className="text-2xl font-bold">User Not Authorisezed</h1>
+            </div>
+        </>
     );
 }
