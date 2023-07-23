@@ -18,7 +18,7 @@ export default function List_influ() {
                     [ View All ]
                 </Link>
             </div>
-            <div className="p-3 m-3 rounded-xl border overflow-auto">
+            <div id="table" className="p-3 m-3 rounded-xl border overflow-auto">
                 <table className="w-full">
                     <thead className="sticky top-0">
                         <tr className="text-[#a1a1aa]">
@@ -91,6 +91,7 @@ export default function List_influ() {
                 <button
                     onClick={() => {
                         setPaginate(paginate - 1);
+                        navigat
                     }}
                     className="px-2 py-1 border rounded-md border-[#57575a] text-white bg-black hover:bg-[#212121]"
                 >

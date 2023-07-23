@@ -22,7 +22,8 @@ export default function Dashboard() {
                         alt="blob"
                     /> */}
                     <div className="min-h-screen  md:pl-64">
-                        <div className="mt-24 mb-16 p-8 flex flex-col text-left">
+                        <div className=" mt-6 rounded-xl pt-28 pb-14 mb-16 p-8 flex flex-col text-left bg-[#121212] mx-2 sm:mr-7 sm:ml-2 opacity-80">
+                            <Image src="../../../../bg.svg" height={700} width={700} alt="bg" className=" sm:w-[440px] absolute opacity-30 end-2 sm:end-8 top-28 hover:opacity-80"></Image>
                             <h1 className="text-6xl  pb-3 font-bold bg-gradient-to-r from-red-600 to-amber-400 bg-clip-text text-transparent">BRAND NAME</h1>
                             <h1 className="text-md">
                                 Total Influencers : 5000
