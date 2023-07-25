@@ -5,12 +5,10 @@ import { useState } from "react";
 import { handleClientScriptLoad } from "next/script";
 import axios from "axios";
 import { useRouter } from 'next/navigation'
+import Loader from "@/components/loader";
 export default function Register() {
     const router = useRouter()
-    // const [data, setData] = useState({
-    //     username:"",
-    //     password:""
-    // })
+    const [loading, setLoading] = useState(false)
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
     const [email, setEmail] = useState("");
@@ -24,25 +22,32 @@ export default function Register() {
         setEmail(evt.target.value);
     }
     async function onSubmit(evt) {
-        evt.preventDefault();
-        const data = { email, username: user, password: pass };
-        const sendData = await axios.post("api/auth/signup", data);
-        // console.log("data send successfully", sendData)
-        router.push("/login")
+        setLoading(true)
+        try {
+            evt.preventDefault();
+            const data = { email, username: user, password: pass };
+            const sendData = await axios.post("api/auth/signup", data);
+            // console.log("data send successfully", sendData)
+            setLoading(false);
+            router.push("/login")
+        } catch (error) {
+            setLoading(false)
+        }
     }
 
     return (
         <div className="w-screen flex">
+            <Loader loading={loading}></Loader>
             <Image
                 src="/register.jpg"
                 width={500}
                 height={500}
-                className="md:w-5/6 h-[700px] md:static absolute -z-10 rounded-3xl md:m-3 md:mt-24 overflow-hidden"
+                className="md:w-5/6 w-screen h-[700px] md:static absolute -z-10 rounded-3xl md:m-3 md:mt-24 overflow-hidden"
                 alt="img"
             />
             <div className="w-screen md:pt-0 md:mt-52 mt-40 pt-20 sm:h-full h-screen text-center  bg-black">
                 <h1 className="text-5xl sm:text-6xl font-black m-10">
-                    {process.env.MONGO_URL}
+                    Register
                 </h1>
                 <form
                     className="flex justify-center flex-col max-w-sm md:max-w-lg m-auto gap-5 "

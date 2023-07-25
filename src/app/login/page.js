@@ -3,9 +3,12 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
+import Loader from "@/components/loader";
+import "../globals.css";
 
 export default function Login() {
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
@@ -22,13 +25,15 @@ export default function Login() {
     }
 
     async function onSubmit(event) {
+        setLoading(true)
         setError({ ...error, there: false });
         try {
             event.preventDefault();
             const data = { email, password: pass };
             const sentData = await axios.post("/api/auth/login", data);
             console.log("successfull login");
-            router.push("/user/dashboard")
+            setLoading(false)
+            router.push("/user/dashboard");
         } catch (error) {
             //incorrect password message
             if (error.response.status == 404) {
@@ -44,17 +49,19 @@ export default function Login() {
                     message: "Incorrect password",
                 });
             }
+            setLoading(false);
             console.log("error occured", error.response.status);
         }
     }
 
     return (
         <div className="w-screen flex">
+            <Loader loading={loading}></Loader>
             <Image
                 src="/login.jpg"
                 width={500}
                 height={500}
-                className="md:w-5/6 md:static absolute -z-10 rounded-3xl  md:m-3 md:mt-24 overflow-hidden"
+                className="md:w-5/6 w-screen md:static absolute -z-10 rounded-3xl  md:m-3 md:mt-24 overflow-hidden"
                 alt="img"
             />
             <div className="w-screen md:pt-0 md:mt-52 sm:mx-0 mt-40 pt-20 sm:h-full h-screen text-center bg-black">

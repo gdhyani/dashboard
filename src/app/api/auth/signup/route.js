@@ -14,7 +14,9 @@ export async function POST(request) {
                 email:reqBody.email,
                 password:reqBody.password,
                 date:Date("2d"),
-                role:"client"
+                role:"client",
+                verified:false,
+                typeOfMarketing:"Instagram "
             })
             await newUser.save();
             return NextResponse.json(reqBody);
