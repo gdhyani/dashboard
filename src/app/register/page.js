@@ -4,13 +4,18 @@ import Image from "next/image";
 import { useState } from "react";
 import { handleClientScriptLoad } from "next/script";
 import axios from "axios";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import Loader from "@/components/loader";
 export default function Register() {
-    const router = useRouter()
-    const [loading, setLoading] = useState(false)
+    const router = useRouter();
+    const [loading, setLoading] = useState(false);
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
+    const [error, setError] = useState({
+        there: false,
+        message: "",
+        status: "",
+    });
     const [email, setEmail] = useState("");
     function handleUsername(evt) {
         setUser(evt.target.value);
@@ -22,16 +27,21 @@ export default function Register() {
         setEmail(evt.target.value);
     }
     async function onSubmit(evt) {
-        setLoading(true)
+        setLoading(true);
         try {
             evt.preventDefault();
             const data = { email, username: user, password: pass };
             const sendData = await axios.post("api/auth/signup", data);
             // console.log("data send successfully", sendData)
             setLoading(false);
-            router.push("/login")
+            router.push("/login");
         } catch (error) {
-            setLoading(false)
+            setLoading(false);
+            setError({
+                there: true,
+                message: "User Already Exists",
+                status: error.response.status,
+            });
         }
     }
 
@@ -48,6 +58,10 @@ export default function Register() {
             <div className="w-screen md:pt-0 md:mt-52 mt-40 pt-20 sm:h-full h-screen text-center  bg-black">
                 <h1 className="text-5xl sm:text-6xl font-black m-10">
                     Register
+                </h1>
+                {/* incorrect message display */}
+                <h1 className="test-2xl font-mono text-red-600">
+                    {error.there ? `${error.message}` : ""}
                 </h1>
                 <form
                     className="flex justify-center flex-col max-w-sm md:max-w-lg m-auto gap-5 "

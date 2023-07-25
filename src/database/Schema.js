@@ -6,7 +6,9 @@ const userSchema = new Schema({
     password: String,
     data: Date,
     id: String,
-    role:String
+    role:String,
+    verified:Boolean,
+    typeOfMarketing:String,
 });
 
 const User = models.users || model("users", userSchema);

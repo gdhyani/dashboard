@@ -12,13 +12,16 @@ export async function POST(request) {
         const userExist = await User.findOne({ email });
         if (userExist) {
             // console.log(userExist);
-            if ((userExist.password == password)) {
+            if (userExist.password == password) {
                 console.log("successful login");
+
+                //these data are stored in token which is encrypted
                 const tokenData = {
                     id: userExist._id,
                     email: userExist.email,
                     username: userExist.username,
                 };
+                // creating token
                 const token = await jwt.sign(
                     tokenData,
                     process.env.TOKEN_SECRET,
@@ -26,11 +29,14 @@ export async function POST(request) {
                         expiresIn: "1d",
                     }
                 );
+                //normal response
                 const response = await NextResponse.json({
                     message: "login successful",
                     success: true,
                 });
-
+                //sending cookies with response for token with name "token", token as in object 
+                //and last the secret key to encrypt and decrypt data
+                
                 response.cookies.set("token", token, {
                     httpOnly: true,
                 });

@@ -5,22 +5,57 @@ import { useState } from "react";
 import { Cross as Hamburger } from "hamburger-react";
 import Sidebar from "./sidebar";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import Loader from "./loader";
+
 export default function Navbar() {
+    //
+    //
+    //
+    const router = new useRouter();
+    //responsive menu open or close which change the hamburger menu button
     const [openMenu, setOpenMenu] = useState(false);
+    //open and close when click on notification icon
     const [notifi, setNotifi] = useState(false);
+    //open or close when click on avatar
     const [avatar, setAvatar] = useState(false);
+    //check loading state
+    const [loading, setLoading] = useState(false);
+    // change menu based on outside click or simple icon click
+    //
     function handleClick() {
         setOpenMenu(!openMenu);
         console.log(openMenu);
     }
+    //open and close notification pannel
+    //
     function handleNotification() {
         setNotifi(!notifi);
     }
+    //open and close avatar pannel
+    //
     function handleAvatar() {
         setAvatar(!avatar);
     }
+    //handle logout by sending get request to backend to change response data 
+    //in which token is changed to empty string and thus logout is done
+    async function handleLogout() {
+        setAvatar(!avatar);
+        setLoading(true);
+        try {
+            await axios.get("/api/auth/logout");
+            setLoading(false);
+            router.push("/login");
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
     return (
         <>
+            {/* when clicked outside the outsideclickhandler it will change accordingly */}
+            <Loader loading={loading} />
             <OutsideClickHandler
                 disabled={!openMenu}
                 onOutsideClick={handleClick}
@@ -128,9 +163,9 @@ export default function Navbar() {
                                 <hr className="border-[#a1a1aa]"></hr>
 
                                 <Link
-                                    onClick={handleAvatar}
                                     className="text-red-500 hover:bg-[#2d2d2f98] h-fit w-full rounded-md p-1"
                                     href="/login"
+                                    onClick={handleLogout}
                                 >
                                     Log out
                                 </Link>

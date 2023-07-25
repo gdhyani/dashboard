@@ -8,8 +8,8 @@ import Loader from "@/components/loader";
 import "../globals.css";
 
 export default function Login() {
-    const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [error, setError] = useState({
@@ -31,9 +31,9 @@ export default function Login() {
             event.preventDefault();
             const data = { email, password: pass };
             const sentData = await axios.post("/api/auth/login", data);
+            router.push("/user/dashboard");
             console.log("successfull login");
             setLoading(false)
-            router.push("/user/dashboard");
         } catch (error) {
             //incorrect password message
             if (error.response.status == 404) {
