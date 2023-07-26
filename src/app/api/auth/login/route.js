@@ -3,7 +3,6 @@ import User from "@/database/Schema";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
-
 export async function POST(request) {
     connect();
     try {
@@ -24,7 +23,7 @@ export async function POST(request) {
                 // creating token
                 const token = await jwt.sign(
                     tokenData,
-                    process.env.TOKEN_SECRET,
+                    "thisis28340dsonvon230dwoivs23ob239023o!@3j3j",
                     {
                         expiresIn: "1d",
                     }
@@ -34,7 +33,7 @@ export async function POST(request) {
                     message: "login successful",
                     success: true,
                 });
-                //sending cookies with response for token with name "token", token as in object 
+                //sending cookies with response for token with name "token", token as in object
                 //and last the secret key to encrypt and decrypt data
 
                 response.cookies.set("token", token, {
