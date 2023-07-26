@@ -1,18 +1,17 @@
 "use client";
 import Image from "next/image";
 import OutsideClickHandler from "react-outside-click-handler";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Cross as Hamburger } from "hamburger-react";
 import Sidebar from "./sidebar";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import axios from "axios";
 import Loader from "./loader";
 
 export default function Navbar() {
-    //
-    //
-    //
+    const [signedin, setSignedin] = useState(false);
+    const pathname = usePathname();
     const router = new useRouter();
     //responsive menu open or close which change the hamburger menu button
     const [openMenu, setOpenMenu] = useState(false);
@@ -22,6 +21,21 @@ export default function Navbar() {
     const [avatar, setAvatar] = useState(false);
     //check loading state
     const [loading, setLoading] = useState(false);
+    //
+    useEffect(() => {
+        getData();
+    }, [pathname]);
+
+    async function getData() {
+        try {
+            const signedUser = await axios.get("/api/auth/signedUser");
+            setSignedin(signedUser.data.logged);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    //
+    //
     // change menu based on outside click or simple icon click
     //
     function handleClick() {
@@ -38,7 +52,7 @@ export default function Navbar() {
     function handleAvatar() {
         setAvatar(!avatar);
     }
-    //handle logout by sending get request to backend to change response data 
+    //handle logout by sending get request to backend to change response data
     //in which token is changed to empty string and thus logout is done
     async function handleLogout() {
         setAvatar(!avatar);
@@ -46,6 +60,7 @@ export default function Navbar() {
         try {
             await axios.get("/api/auth/logout");
             router.push("/");
+            getData();
             setLoading(false);
         } catch (error) {
             console.log(error.message);
@@ -93,14 +108,6 @@ export default function Navbar() {
                                 No Active <br></br>Notifications
                             </p>
                         </div>
-                        <div>
-                            <Image
-                                src="../info.svg"
-                                width={40}
-                                height={40}
-                                alt="noti"
-                            />
-                        </div>
 
                         <div className="flex align-center">
                             <Image
@@ -110,16 +117,31 @@ export default function Navbar() {
                                 alt="noti"
                             />
                         </div>
-
-                        <div onClick={handleAvatar}>
-                            <Image
-                                className="border-2 p-1 rounded-full  "
-                                src="../avatar.svg"
-                                width={40}
-                                height={40}
-                                alt="noti"
-                            />
-                        </div>
+                        {/* check for signin  */}
+                        {!signedin ? (
+                            <div className="flex justify-center items-center">
+                                <Link
+                                    href={`${
+                                        pathname == "/login"
+                                            ? "/register"
+                                            : "/login"
+                                    }`}
+                                    className="text-md sm:text-xl rounded-2xl bg-[#212121] px-4 py-2"
+                                >
+                                    {pathname == "/login" ? "Register" : "Log In"}
+                                </Link>
+                            </div>
+                        ) : (
+                            <div onClick={handleAvatar}>
+                                <Image
+                                    className="border-2 p-1 rounded-full  "
+                                    src="../avatar.svg"
+                                    width={40}
+                                    height={40}
+                                    alt="noti"
+                                />
+                            </div>
+                        )}
                         <OutsideClickHandler
                             onOutsideClick={handleAvatar}
                             disabled={!avatar}
@@ -164,7 +186,6 @@ export default function Navbar() {
 
                                 <button
                                     className="text-red-500 hover:bg-[#2d2d2f98] h-fit w-full rounded-md p-1"
-                                    
                                     onClick={handleLogout}
                                 >
                                     Log out
