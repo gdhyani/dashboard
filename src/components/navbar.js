@@ -162,13 +162,13 @@ export default function Navbar() {
                                 </Link>
                                 <hr className="border-[#a1a1aa]"></hr>
 
-                                <Link
+                                <button
                                     className="text-red-500 hover:bg-[#2d2d2f98] h-fit w-full rounded-md p-1"
                                     href="/login"
                                     onClick={handleLogout}
                                 >
                                     Log out
-                                </Link>
+                                </button>
                             </div>
                         </OutsideClickHandler>
                     </div>
