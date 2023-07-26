@@ -164,7 +164,7 @@ export default function Navbar() {
 
                                 <button
                                     className="text-red-500 hover:bg-[#2d2d2f98] h-fit w-full rounded-md p-1"
-                                    href="/login"
+                                    
                                     onClick={handleLogout}
                                 >
                                     Log out
