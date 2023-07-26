@@ -52,7 +52,7 @@ export default function Register() {
                 src="/register.jpg"
                 width={500}
                 height={500}
-                className="md:w-5/6 w-screen h-[700px] md:static absolute -z-10 rounded-3xl md:m-3 md:mt-24 overflow-hidden"
+                className="md:w-5/6 w-screen h-[800px] md:static absolute -z-10 rounded-3xl md:m-3 md:mt-24 overflow-hidden"
                 alt="img"
             />
             <div className="w-screen md:pt-0 md:mt-52 mt-40 pt-20 sm:h-full h-screen text-center  bg-black">

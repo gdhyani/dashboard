@@ -3,15 +3,15 @@ import User from "@/database/Schema";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
-connect();
 
 export async function POST(request) {
+    connect();
     try {
         const reqBody = await request.json();
         const { email, password } = reqBody;
         const userExist = await User.findOne({ email });
         if (userExist) {
-            // console.log(userExist);
+            console.log(userExist);
             if (userExist.password == password) {
                 console.log("successful login");
 
@@ -36,7 +36,7 @@ export async function POST(request) {
                 });
                 //sending cookies with response for token with name "token", token as in object 
                 //and last the secret key to encrypt and decrypt data
-                
+
                 response.cookies.set("token", token, {
                     httpOnly: true,
                 });

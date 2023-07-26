@@ -61,7 +61,7 @@ export default function Login() {
                 src="/login.jpg"
                 width={500}
                 height={500}
-                className="md:w-5/6 w-screen md:static absolute -z-10 rounded-3xl  md:m-3 md:mt-24 overflow-hidden"
+                className="md:w-5/6 h-[800px] w-screen md:static absolute -z-10 rounded-3xl  md:m-3 md:mt-24 overflow-hidden"
                 alt="img"
             />
             <div className="w-screen md:pt-0 md:mt-52 sm:mx-0 mt-40 pt-20 sm:h-full h-screen text-center bg-black">

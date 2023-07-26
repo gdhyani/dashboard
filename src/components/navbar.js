@@ -45,8 +45,8 @@ export default function Navbar() {
         setLoading(true);
         try {
             await axios.get("/api/auth/logout");
+            router.push("/");
             setLoading(false);
-            router.push("/login");
         } catch (error) {
             console.log(error.message);
         }
