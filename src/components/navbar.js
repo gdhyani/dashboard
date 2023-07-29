@@ -77,12 +77,14 @@ export default function Navbar() {
             >
                 <div className="fixed w-screen z-40 bg-black border-b border-[#262626] flex flex-row justify-between px-3 sm:px-10 py-5 items-center">
                     <div className="flex align-middle items-center flex-row gap-2">
-                        <button
+                        {signedin? <button
                             className="sm:hidden block z-50"
                             onClick={handleClick}
                         >
                             <Hamburger toggled={openMenu} size={32}></Hamburger>
                         </button>
+                        :""}
+                       
                         <Link href="/" className="text-2xl font-bold">
                             Dashboard
                         </Link>
